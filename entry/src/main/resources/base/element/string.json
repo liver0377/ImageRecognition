@@ -1,0 +1,100 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模组描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "描述"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "标签"
+    },
+    {
+      "name": "toolBar1",
+      "value": "识别"
+    },
+    {
+      "name": "toolBar2",
+      "value": "我"
+    },
+    {
+      "name": "animal_recognition",
+      "value": "动物识别"
+    },
+    {
+      "name": "botany_recognition",
+      "value": "植物识别"
+    },
+    {
+      "name": "logo_recognition",
+      "value": "logo识别"
+    },
+    {
+      "name": "vegetable_recognition",
+      "value": "果蔬识别"
+    },
+    {
+      "name": "money_recognition",
+      "value": "货币识别"
+    },
+    {
+      "name": "photo_name",
+      "value": "名称:"
+    },
+    {
+      "name": "result_type",
+      "value": "类型:"
+    },
+    {
+      "name": "reliability",
+      "value": "可信度:"
+    },
+    {
+      "name": "general_recognition",
+      "value": "通用"
+    },
+    {
+      "name": "photo_description",
+      "value": "图片描述"
+    },
+    {
+      "name": "similarity",
+      "value": "相似度"
+    },
+    {
+      "name": "scan_local_image",
+      "value": "扫描本地图片"
+    },
+    {
+      "name": "index_tab_local_video",
+      "value": "本地图片列表"
+    },
+    {
+      "name": "index_tab_general",
+      "value": "通用"
+    },
+    {
+      "name": "index_tab_animal",
+      "value": "动物"
+    },
+    {
+      "name": "index_tab_botany",
+      "value": "植物"
+    },
+    {
+      "name": "index_tab_logo",
+      "value": "logo"
+    },
+    {
+      "name": "index_tab_vegetable",
+      "value": "蔬菜"
+    },
+    {
+      "name": "index_tab_money",
+      "value": "货币"
+    }
+  ]
+}
