@@ -1,10 +1,63 @@
+import { ImageItem } from '../viewmodel/ImageItem'
 import { ResultItem } from '../viewmodel/ResultItem'
 import { ResultTabContentList } from '../view/ResultTabContentList'
 import { CommonConstants } from '../common/constants/CommonConstants'
+import { HttpHelper } from '../common/utils/HttpUtil'
+import  Logger  from '../common/utils/Logger'
+import { PageConstants } from '../common/constants/PageConstants'
 
 @Component
 export struct ResultTabContent {
-  @Provide imageList: Array<ResultItem> = [];
+  @Consume currentIndex: number;
+  @Consume imageName: string;
+  @Consume httpHelper: HttpHelper;
+
+  @Provide resultList: Array<ResultItem> = [new ResultItem("AAAA", "human", 100, "xxx是...", new ImageItem('image1', "jpg"))];
+
+  async generalRecognize() {
+    let resultList : Array<ResultItem> = [];
+
+    try {
+      let generalResponseUnitList = await this.httpHelper.generalImageRequest();
+
+      generalResponseUnitList.forEach((item) => {
+        resultList.push(new ResultItem(item.getKeyword(), item.getTag(), item.getScore(), item.getDescription(), new ImageItem('image1', "jpg")))
+      })
+
+      // DEBUG
+      Logger.info("resultList is assembled", resultList.toString());
+
+    } catch(err) {
+      Logger.error("generalImageRequest falied", JSON.stringify(err));
+    }
+
+
+    return resultList
+  }
+
+  // 当切换页签时, 该函数是否会重新调用?
+  aboutToAppear() {
+    // 异步执行
+    if (this.currentIndex == PageConstants.TAB_BAR_FIRST) {
+      this.generalRecognize()
+        .then((resultList: Array<ResultItem>) => {
+          this.resultList = resultList;
+          Logger.info("recognize success, resultList: ", resultList.toString());
+        })
+        .catch((resultList: Array<ResultItem>) => {
+          this.resultList = resultList
+          Logger.info("recognize failed, resultList: ", resultList.toString());
+        });
+    }
+
+    // if (this.resultList.length == undefined) {
+    //   Logger.info("this.resultList.length is undefined", "");
+    //   this.resultList = [];
+    // } else {
+    //   Logger.info("this.resultList.length:    ", this.resultList.length.toString());
+    //   Logger.info("resultList[0].name:     ", this.resultList[0].getName().toString())
+    // }
+  }
 
   build() {
     Column() {

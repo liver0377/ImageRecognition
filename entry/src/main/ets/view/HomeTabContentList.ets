@@ -4,13 +4,14 @@ import  HomeTabContentListModel  from '../viewmodel/HomeImageListModel'
 import { CommonConstants } from '../common/constants/CommonConstants'
 import { PageConstants } from '../common/constants/PageConstants'
 import router from '@ohos.router';
+import Logger from '../common/utils/Logger'
 
 @Component
 export struct HomeTabContentList {
   @Consume imageList : Array<ImageItem>;
 
   async aboutToAppear() {
-    this.imageList = await HomeTabContentListModel.getLocalImage();
+    // this.imageList = await HomeTabContentListModel.getLocalImage();
   }
 
   build() {
@@ -26,13 +27,13 @@ export struct HomeTabContentList {
 
             //
             router.pushUrl({
-              url : CommonConstants.PAGE,
+              url : CommonConstants.RESULT_PAGE,
               params: {
-                fd: item.getFd()
+                imageName: item.getName()
               }
             }).catch((err: Error) => {
               // TODO: 异常日志
-              // Logger.error('[IndexTabLocalList] router error: ' + JSON.stringify(err))
+              Logger.error('[IndexTabLocalList] router error: ' + JSON.stringify(err))
             });
           })
         }, (item: ImageItem) => JSON.stringify(item))

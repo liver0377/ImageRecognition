@@ -3,14 +3,14 @@ import { ImageItem } from '../viewmodel/ImageItem'
 
 export class ResultItem {
   private name: string;
-  private recognitionType: RecognitionType;
+  private recognitionType: RecognitionType | string;
   private reliability: number;
   private description: string;
   private image: ImageItem;
 
   constructor(
     name: string,
-    recognitionType: RecognitionType,
+    recognitionType: RecognitionType | string,
     reliability: number,
     description: string,
     image: ImageItem
@@ -27,7 +27,7 @@ export class ResultItem {
     return this.name;
   }
 
-  public getRecognitionType(): RecognitionType {
+  public getRecognitionType(): RecognitionType | string {
     return this.recognitionType;
   }
 

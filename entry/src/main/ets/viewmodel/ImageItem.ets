@@ -2,18 +2,19 @@ import resourceManager from '@ohos.resourceManager';
 
 export class ImageItem {
   private name : string;
-  private fd : resourceManager.RawFileDescriptor;
+  private format: string;
+  // private fd : resourceManager.RawFileDescriptor;
 
   public getName() {
     return this.name
   }
 
-  public getFd() {
-    return this.fd
+  public getFormat() {
+    return this.format;
   }
 
-  constructor(name: string, fd : resourceManager.RawFileDescriptor) {
+  constructor(name: string, format: string) {
     this.name = name
-    this.fd = fd
+    this.format = format;
   }
 }

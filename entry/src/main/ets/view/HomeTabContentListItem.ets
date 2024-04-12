@@ -5,7 +5,7 @@ import resourceManager from '@ohos.resourceManager';
 
 @Component
 export struct HomeTabContentListItem {
-  private item: ImageItem = new ImageItem('image1', {} as resourceManager.RawFileDescriptor);
+  private item: ImageItem = new ImageItem('image1', "jpg");
 
   build() {
     Row() {

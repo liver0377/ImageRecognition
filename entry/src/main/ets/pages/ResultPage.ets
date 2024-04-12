@@ -3,32 +3,76 @@ import { ResultItem } from '../viewmodel/ResultItem'
 import { CommonConstants,  RecognitionType } from '../common/constants/CommonConstants'
 import { PageConstants } from '../common/constants/PageConstants'
 import { ResultTabContent } from '../view/ResultTabContent'
-import resourceManager from '@ohos.resourceManager';
+import { HttpHelper } from '../common/utils/HttpUtil'
 import router from '@ohos.router';
+import Logger from '../common/utils/Logger'
 
 @Entry
 @Component
 struct ResultPage {
   private controller: TabsController = new TabsController();
-  private fd : resourceManager.RawFileDescriptor = {} as resourceManager.RawFileDescriptor          // 待上传的文件的文件描述符
-  @State currentIndex : number = 0;
-  @Provide  resultList : Array<ResultItem> = [new ResultItem("none", RecognitionType.General, 100, "xxx是...", new ImageItem('image1', {} as resourceManager.RawFileDescriptor))];
+  @Provide imageName : string = "";
+  @Provide httpHelper : HttpHelper = new HttpHelper("");
+  @Provide currentIndex : number = 0;
+  // @Provide  resultList : Array<ResultItem> = [new ResultItem("AAAA", RecognitionType.General, 100, "xxx是...", new ImageItem('image1', "jpg"))];
 
-  // 将图片上传到服务器
-  upload()  {
-    // TODO
-  }
 
   // 当切换Tab之后, 需要重新识别图片
-  refresh() {
+  // async generalRecognize() {
+  //   let generalResponseUnitList = await this.httpHelper.generalImageRequest();
+  //   let resultList : Array<ResultItem>;
+  //   generalResponseUnitList.forEach((item) => {
+  //     resultList.push(new ResultItem(item.getKeyword(), item.getTag(), item.getScore(), item.getDescription(), new ImageItem('image1', "jpg")))
+  //   })
+  //   // DEBUG
+  //   Logger.info("resultList is assembled", resultList.toString());
+  //
+  //   return resultList
+  // }
 
-  }
+  // refresh() {
+  //   // DEBUG
+  //   Logger.info("Change Tab, currentIndex:", this.currentIndex.toString());
+  //   if(this.currentIndex == PageConstants.TAB_BAR_FIRST)  {
+  //     this.generalRecognize();
+  //   }
+  //   // if (this.resultList == undefined) {
+  //   //   Logger.error("resultList is undefined", "");
+  //   // } else if (this.resultList.length == undefined) {
+  //   //   Logger.error("resultList.length is undefined resultList:", this.resultList.toString());
+  //   // }
+  // }
 
   aboutToAppear() {
     // 根据Index传递过来的参数类型将图片上传
-    // upload()
     let params = router.getParams() as Record<string, Object>;
-    this.fd = params.fd as resourceManager.RawFileDescriptor;
+    this.imageName = params.imageName as string;
+    // DEBUG
+    if (this.imageName == null) {
+      Logger.info("image is bad initialized, image:", "no!!!!!!!!!!");
+    }
+    // let name = this.image.getName()
+
+    this.httpHelper = new HttpHelper(this.imageName);
+
+    // // DEBUG
+    //
+    //
+    // // general
+    // if (this.currentIndex == PageConstants.TAB_BAR_FIRST) {
+    //   this.generalRecognize()
+    //     .then((resultList: Array<ResultItem>) => { this.resultList = resultList; })
+    //     .catch((resultList: Array<ResultItem>) => { this.resultList = resultList});
+    // }
+    //
+    // // DEBUG
+    // if (this.resultList.length == undefined) {
+    //   Logger.info("this.resultList.length is undefined", "");
+    //   this.resultList = [];
+    // } else  {
+    //   Logger.info("this.resultList.length:    ", this.resultList.length.toString());
+    //   Logger.info("resultList[0].name:     ", this.resultList[0].getName().toString())
+    // }
   }
 
   @Builder
@@ -51,7 +95,7 @@ struct ResultPage {
     .width(CommonConstants.FULL_PERCENT)
     .onClick(() => {
       this.currentIndex = index;
-      this.refresh()
+      // this.refresh()
       this.controller.changeIndex(this.currentIndex);
     })
   }

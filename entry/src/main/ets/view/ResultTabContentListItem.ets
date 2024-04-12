@@ -6,8 +6,7 @@ import resourceManager from '@ohos.resourceManager';
 
 @Component
 export struct ResultTabContentListItem {
-  private result: ResultItem = new ResultItem("none", RecognitionType.General, 100, "none", new ImageItem("iamge1.jpg", {
-  } as resourceManager.RawFileDescriptor))
+  private result: ResultItem = new ResultItem("none", RecognitionType.General, 100, "none", new ImageItem("iamge1", "jpg"))
 
   build() {
     Column() {

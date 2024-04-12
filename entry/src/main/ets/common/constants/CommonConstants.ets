@@ -57,7 +57,29 @@ export class CommonConstants {
   /**
    * image recognition result page
    */
-  static readonly PAGE: string =  "pages/ResultPage";
+  static readonly RESULT_PAGE: string =  "pages/ResultPage";
+
+  /**
+   * baidu image recognition url
+   */
+  static readonly BAIDU_GENERAL_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general"
+  static readonly BAIDU_ANIMAL_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v1/animal"
+  static readonly BAIDU_PLANT_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v1/plant"
+  static readonly BAIDU_LOGO_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v2/logo"
+  static readonly BAIDU_MONEY_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v1/currency"
+
+  /**
+   * baidu baike numbers
+   */
+  static readonly  BAIKE_NUM : number = 5;
+
+
+  static readonly HTTP_STATUS_CODE_OK : number = 200;
+  /**
+   *  http request timeout duration
+   */
+  static readonly REQUEST_TIMEOUT: number = 10000;
+
 }
 
 
@@ -65,18 +87,11 @@ export class CommonConstants {
  * Image object collection
  */
 export const IMAGE_DATA: ImageItem[] = [
-  new ImageItem('image1.jpg', {} as resourceManager.RawFileDescriptor),
-  new ImageItem('image2.jpg', {} as resourceManager.RawFileDescriptor),
-  new ImageItem('image3.jpg', {} as resourceManager.RawFileDescriptor),
+  new ImageItem('image_1', "jpg"),
+  new ImageItem('image_2', "jpg"),
+  new ImageItem('image_3', "jpg"),
 ]
 
-export const recognitionVariety : Resource[] = [
-  $r('app.string.animal_recognition'),
-  $r('app.string.botany_recognition'),
-  $r('app.string.logo_recognition'),
-  $r('app.string.vegetable_recognition'),
-  $r('app.string.money_recognition'),
-]
 
 export enum RecognitionType {
   General = "general",
@@ -86,5 +101,6 @@ export enum RecognitionType {
   Vegetable = "vegetable",
   Money = "money"
 }
+
 
 

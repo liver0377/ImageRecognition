@@ -23,8 +23,8 @@ export class HomeImageListModel {
    */
   async assemblingImage() {
     IMAGE_DATA.forEach(async (item: ImageItem) => {
-      let imageFd = await getContext().resourceManager.getRawFd(item.getName());
-      this.imageLocalList.push(new ImageItem(item.getName(), imageFd));
+      // let imageFd = await getContext().resourceManager.getRawFd(item.getName());
+      this.imageLocalList.push(new ImageItem(item.getName(), item.getFormat()));
     });
   }
 

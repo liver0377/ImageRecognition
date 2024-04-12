@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/ResultPage"
+    "pages/ResultPage",
+    "pages/Error"
   ]
 }
