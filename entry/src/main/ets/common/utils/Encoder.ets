@@ -9,11 +9,14 @@ export class Encoder {
     try {
       let imageBase64Buffer = await getContext().resourceManager.getMediaBase64ByName(imageName);
       // 去除编码头
-      imageBase64Buffer = imageBase64Buffer.replace(/^data:image\/(png|jpg|bmp);base64,/, '')
+      // imageBase64Buffer = imageBase64Buffer.replace(/^data:image\/(png|jpg|bmp);base64,/, '')
+
+      // imageBase64Buffer = imageBase64Buffer;
 
       // URL编码
-      imageFinalCode = encodeURIComponent(imageBase64Buffer);
-      Logger.error("encode media to base64 successfully, imageName:", imageName);
+      imageFinalCode = `${encodeURIComponent(imageBase64Buffer)}`;
+
+      Logger.info("encode media to base64 successfully, imageFinalCode:", imageFinalCode.slice(15));
     } catch(err) {
       Logger.error("get Media base64 by name failed, imageName:", JSON.stringify(err) + ';       ' + imageName);
     }

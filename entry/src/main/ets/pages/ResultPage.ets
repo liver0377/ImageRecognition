@@ -106,27 +106,27 @@ struct ResultPage {
 
         // general
         TabContent() {
-          ResultTabContent();
+          ResultTabContent({myIndex : 0});
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FIRST, $r('app.string.index_tab_general')))
 
         // animal
         TabContent() {
-          ResultTabContent();
+          ResultTabContent({myIndex : 1});
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_SECOND, $r('app.string.index_tab_animal')))
 
         // botany
         TabContent() {
-          ResultTabContent();
+          ResultTabContent({myIndex : 2});
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_THIRD, $r('app.string.index_tab_botany')))
 
         // logo
         TabContent() {
-          ResultTabContent();
+          ResultTabContent({myIndex : 3});
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FOURTH, $r('app.string.index_tab_logo')))
 
         // money
         TabContent() {
-          ResultTabContent();
+          ResultTabContent({ myIndex : 4});
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FIFTH, $r('app.string.index_tab_money')))
 
       }

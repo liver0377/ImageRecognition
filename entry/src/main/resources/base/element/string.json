@@ -95,6 +95,10 @@
     {
       "name": "index_tab_money",
       "value": "货币"
+    },
+    {
+      "name": "dependency_reason",
+      "value": "connect internet"
     }
   ]
 }

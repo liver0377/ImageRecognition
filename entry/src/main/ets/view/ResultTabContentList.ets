@@ -16,11 +16,11 @@ export struct ResultTabContentList {
           space: PageConstants.LIST_SPACE,
           initialIndex: PageConstants.LIST_INITIAL_INDEX
         }) {
-          // ForEach(this.resultList, (result: ResultItem) => {
-          //   ListItem() {
-          //      ResultTabContentListItem({ result: result });
-          //   }
-          // })
+          ForEach(this.resultList, (result: ResultItem) => {
+            ListItem() {
+               ResultTabContentListItem({ result: result });
+            }
+          })
         }
         .backgroundColor(Color.White)
         .borderRadius($r('app.float.list_border_radius'))

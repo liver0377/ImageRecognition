@@ -8,6 +8,7 @@ import { PageConstants } from '../common/constants/PageConstants'
 
 @Component
 export struct ResultTabContent {
+  private myIndex: number;
   @Consume currentIndex: number;
   @Consume imageName: string;
   @Consume httpHelper: HttpHelper;
@@ -38,7 +39,7 @@ export struct ResultTabContent {
   // 当切换页签时, 该函数是否会重新调用?
   aboutToAppear() {
     // 异步执行
-    if (this.currentIndex == PageConstants.TAB_BAR_FIRST) {
+    if (this.currentIndex == this.myIndex) {
       this.generalRecognize()
         .then((resultList: Array<ResultItem>) => {
           this.resultList = resultList;
@@ -50,13 +51,6 @@ export struct ResultTabContent {
         });
     }
 
-    // if (this.resultList.length == undefined) {
-    //   Logger.info("this.resultList.length is undefined", "");
-    //   this.resultList = [];
-    // } else {
-    //   Logger.info("this.resultList.length:    ", this.resultList.length.toString());
-    //   Logger.info("resultList[0].name:     ", this.resultList[0].getName().toString())
-    // }
   }
 
   build() {
