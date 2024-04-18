@@ -5,12 +5,13 @@ import resourceManager from '@ohos.resourceManager';
 
 @Component
 export struct HomeTabContentListItem {
-  private item: ImageItem = new ImageItem('image1', "jpg");
+  private item: ImageItem;
+
 
   build() {
     Row() {
       // TODO: 将图片修改为自身
-      Image($r('app.media.ic_internet'))
+      Image('images/' + this.item.getName() + '.' + this.item.getFormat())
         .height(PageConstants.IMAGE_HEIGHT)
         .width(PageConstants.IMAGE_WIDTH)
         .margin({ left: $r('app.float.item_image_margin_left') })

@@ -71,16 +71,16 @@ export class CommonConstants {
   /**
    * baidu baike numbers
    */
-  static readonly  BAIKE_NUM : number = 0;
+  static readonly  BAIKE_NUM : number = 5;
 
 
   static readonly HTTP_STATUS_CODE_OK : number = 200;
   /**
    *  http request timeout duration
    */
-  static readonly REQUEST_TIMEOUT: number = 10000;
+  static readonly REQUEST_TIMEOUT: number = 100000;
 
-  static readonly HTTP_READ_TIMEOUT: number = 10000;
+  static readonly HTTP_READ_TIMEOUT: number = 100000;
 
 
 }

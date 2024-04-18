@@ -13,34 +13,6 @@
       "value": "标签"
     },
     {
-      "name": "toolBar1",
-      "value": "识别"
-    },
-    {
-      "name": "toolBar2",
-      "value": "我"
-    },
-    {
-      "name": "animal_recognition",
-      "value": "动物识别"
-    },
-    {
-      "name": "botany_recognition",
-      "value": "植物识别"
-    },
-    {
-      "name": "logo_recognition",
-      "value": "logo识别"
-    },
-    {
-      "name": "vegetable_recognition",
-      "value": "果蔬识别"
-    },
-    {
-      "name": "money_recognition",
-      "value": "货币识别"
-    },
-    {
       "name": "photo_name",
       "value": "名称:"
     },

@@ -11,6 +11,66 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+    "name": "photo_name",
+    "value": "name:"
+    },
+    {
+      "name": "result_type",
+      "value": "result type:"
+    },
+    {
+      "name": "reliability",
+      "value": "score:"
+    },
+    {
+      "name": "general_recognition",
+      "value": "general"
+    },
+    {
+      "name": "photo_description",
+      "value": "image description"
+    },
+    {
+      "name": "similarity",
+      "value": "similarity"
+    },
+    {
+      "name": "scan_local_image",
+      "value": "scan local image"
+    },
+    {
+      "name": "index_tab_local_video",
+      "value": "local image"
+    },
+    {
+      "name": "index_tab_general",
+      "value": "general"
+    },
+    {
+      "name": "index_tab_animal",
+      "value": "animal"
+    },
+    {
+      "name": "index_tab_botany",
+      "value": "botany"
+    },
+    {
+      "name": "index_tab_logo",
+      "value": "logo"
+    },
+    {
+      "name": "index_tab_vegetable",
+      "value": "vegetable"
+    },
+    {
+      "name": "index_tab_money",
+      "value": "money"
+    },
+    {
+      "name": "dependency_reason",
+      "value": "connect internet"
     }
   ]
 }

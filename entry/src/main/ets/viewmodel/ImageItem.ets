@@ -3,7 +3,7 @@ import resourceManager from '@ohos.resourceManager';
 export class ImageItem {
   private name : string;
   private format: string;
-  // private fd : resourceManager.RawFileDescriptor;
+  private internetUrl: string;
 
   public getName() {
     return this.name
@@ -13,8 +13,13 @@ export class ImageItem {
     return this.format;
   }
 
-  constructor(name: string, format: string) {
+  public getInternetUrl() {
+    return this.internetUrl;
+  }
+
+  constructor(name: string, format: string, internetUrl?: string) {
     this.name = name
     this.format = format;
+    this.internetUrl = internetUrl;
   }
 }

@@ -37,16 +37,6 @@ export class HttpHelper {
       extraData: `image=${imageCode}&baike_num=${CommonConstants.BAIKE_NUM}`
     }
 
-    // let test_url = "http://172.16.57.196:9588/news/getNewsType"
-    // let test_options = {
-    //   method: http.RequestMethod.GET,
-    //   readTimeout: CommonConstants.HTTP_READ_TIMEOUT,
-    //   connectTimeout: CommonConstants.HTTP_READ_TIMEOUT,
-    //   header: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   extraData: {}
-    // }
 
     let results: Array<GeneralResponseUnit> = [];
     let httpResponseResult = httpRequest.request(url, options);
@@ -57,7 +47,16 @@ export class HttpHelper {
         Logger.info("response.data: ", JSON.stringify(data))
         let result = data.result; // Object数组
          result.forEach((item, index) => {
-           let resultUnit = new GeneralResponseUnit(item.keyword, item.root, item.score, item.baike_info == undefined ? "" : item.baike_info.description);
+           let baike_description :string = "";
+           let baike_url: string = "";
+           let image_url:string = "";
+
+           if (item.baike_info != undefined) {
+               baike_description= item.baike_info.descrition;
+               baike_url = item.baike_info.baike_url;
+               image_url = item.baike_info.image_url;
+           }
+           let resultUnit = new GeneralResponseUnit(item.keyword, item.root, item.score, baike_description, image_url, baike_url);
            results.push(resultUnit);
          })
       }

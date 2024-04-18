@@ -8,6 +8,7 @@ export class ResultItem {
   private description: string;
   private image: ImageItem;
 
+
   constructor(
     name: string,
     recognitionType: RecognitionType | string,
