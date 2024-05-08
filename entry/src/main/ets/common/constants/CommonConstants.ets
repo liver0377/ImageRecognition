@@ -68,6 +68,8 @@ export class CommonConstants {
   static readonly BAIDU_LOGO_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v2/logo"
   static readonly BAIDU_MONEY_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v1/currency"
 
+  static readonly MY_GENERAL_URL: string = "http://192.168.100.169:9588/image/"
+
   /**
    * baidu baike numbers
    */
@@ -78,9 +80,9 @@ export class CommonConstants {
   /**
    *  http request timeout duration
    */
-  static readonly REQUEST_TIMEOUT: number = 100000;
+  static readonly REQUEST_TIMEOUT: number = 60000;
 
-  static readonly HTTP_READ_TIMEOUT: number = 100000;
+  static readonly HTTP_READ_TIMEOUT: number = 60000;
 
 
 }
@@ -93,7 +95,16 @@ export const IMAGE_DATA: ImageItem[] = [
   new ImageItem('image_1', "jpg"),
   new ImageItem('image_2', "jpg"),
   new ImageItem('image_3', "jpg"),
+  new ImageItem('image_4', "jpg"),
+  new ImageItem('image_5', "jpg"),
+  new ImageItem('image_6', "jpg"),
+  new ImageItem('image_7', "jpg"),
+  new ImageItem('image_8', "jpg"),
+  new ImageItem('image_9', "jpg"),
+  new ImageItem('image_10', "jpg"),
+  new ImageItem('image_11', "jpg"),
 ]
+
 
 
 export enum RecognitionType {
@@ -101,7 +112,6 @@ export enum RecognitionType {
   Animal = "animal",
   Botany = "botany",
   Logo = "logo",
-  Vegetable = "vegetable",
   Money = "money"
 }
 

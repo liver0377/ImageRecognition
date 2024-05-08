@@ -17,23 +17,14 @@ export struct ResultTabContentListItem {
           // 名称
           Text($r('app.string.photo_name'))
             .fontSize($r('app.float.item_font_size'))
-            // .margin({
-            //   right: $r('app.float.item_text_margin_right')
-            // })
 
           // 类型
           Text($r('app.string.result_type'))
             .fontSize($r('app.float.item_font_size'))
-            // .margin({
-            //   right: $r('app.float.item_text_margin_right')
-            // })
 
           // 可信度
           Text($r('app.string.reliability'))
             .fontSize($r('app.float.item_font_size'))
-        //     .margin({
-        //       right: $r('app.float.item_text_margin_right')
-        //     })
         }
         .height(CommonConstants.FULL_PERCENT)
         .width(CommonConstants.TWENTY_PERCENT)
@@ -50,9 +41,6 @@ export struct ResultTabContentListItem {
           Text(this.result.getRecognitionType())
             .fontSize($r('app.float.item_font_size'))
 
-
-
-
           // 置信度
           Text((this.result.getReliability() * 100).toFixed(2).toString() + '%')
             .fontSize($r('app.float.item_font_size'))
@@ -65,7 +53,6 @@ export struct ResultTabContentListItem {
 
         Column() {
           Image(this.result.getImage().getInternetUrl())
-            // .width(PageConstants.IMAGE_WIDTH)
             .borderRadius($r('app.float.image_border_radius'))
         }
         .height(CommonConstants.FULL_PERCENT)
@@ -77,19 +64,6 @@ export struct ResultTabContentListItem {
       }
       .height(CommonConstants.FULL_PERCENT)
       .width(CommonConstants.NINETY_PERCENT)
-      // .justifyContent(FlexAlign.SpaceAround)
-
-      // 描述信息行
-      // Row() {
-      //   Text(this.result.getDescription())
-      //     .fontSize($r('app.float.item_font_size'))
-      //     .margin({
-      //       left: $r('app.float.item_text_margin_left'),
-      //       right: $r('app.float.item_text_margin_right')
-      //     })
-      // }
-      // .height(CommonConstants.FIFTY_PERCENT)
-      // .width(CommonConstants.NINETY_PERCENT)
 
       Divider()
         .strokeWidth(PageConstants.DIVIDER_STROKE_WIDTH)

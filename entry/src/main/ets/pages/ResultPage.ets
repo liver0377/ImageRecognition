@@ -1,6 +1,6 @@
 import { ImageItem } from '../viewmodel/ImageItem'
 import { ResultItem } from '../viewmodel/ResultItem'
-import { CommonConstants,  RecognitionType } from '../common/constants/CommonConstants'
+import { CommonConstants, RecognitionType } from '../common/constants/CommonConstants'
 import { PageConstants } from '../common/constants/PageConstants'
 import { ResultTabContent } from '../view/ResultTabContent'
 import { HttpHelper } from '../common/utils/HttpUtil'
@@ -11,68 +11,82 @@ import Logger from '../common/utils/Logger'
 @Component
 struct ResultPage {
   private controller: TabsController = new TabsController();
-  @Provide imageName : string = "";
-  @Provide httpHelper : HttpHelper = new HttpHelper("");
-  @Provide currentIndex : number = 0;
-  // @Provide  resultList : Array<ResultItem> = [new ResultItem("AAAA", RecognitionType.General, 100, "xxx是...", new ImageItem('image1', "jpg"))];
+  @Provide imageName: string = "";
+  @Provide httpHelper: HttpHelper = new HttpHelper("");
+  @Provide currentIndex: number = 0;
+  // TEST
+  @Provide resultList: Array<ResultItem> = [new ResultItem("null", "null", 0, "xxx是...", new ImageItem('xxx', "jpg"))];
 
+  async recognize(idx: number) {
+    let resultList: Array<ResultItem> = [];
+    let generalResponseUnitList ;
 
-  // 当切换Tab之后, 需要重新识别图片
-  // async generalRecognize() {
-  //   let generalResponseUnitList = await this.httpHelper.generalImageRequest();
-  //   let resultList : Array<ResultItem>;
-  //   generalResponseUnitList.forEach((item) => {
-  //     resultList.push(new ResultItem(item.getKeyword(), item.getTag(), item.getScore(), item.getDescription(), new ImageItem('image1', "jpg")))
-  //   })
-  //   // DEBUG
-  //   Logger.info("resultList is assembled", resultList.toString());
-  //
-  //   return resultList
-  // }
+    try {
+      if (idx == PageConstants.TAB_BAR_FIRST) {
+        generalResponseUnitList = await this.httpHelper.generalImageRequest();
+      }
+      if (idx == PageConstants.TAB_BAR_SECOND) {
+        generalResponseUnitList = await this.httpHelper.animalImageRequest();
+      }
+      if (idx == PageConstants.TAB_BAR_THIRD) {
+        generalResponseUnitList = await this.httpHelper.plantImageRequest();
+      }
+      if (idx == PageConstants.TAB_BAR_FOURTH) {
+        generalResponseUnitList = await this.httpHelper.logoImageRequest();
+      }
+      if (idx == PageConstants.TAB_BAR_FIFTH) {
+        generalResponseUnitList = await this.httpHelper.moneyImageRequest();
+      }
 
-  // refresh() {
-  //   // DEBUG
-  //   Logger.info("Change Tab, currentIndex:", this.currentIndex.toString());
-  //   if(this.currentIndex == PageConstants.TAB_BAR_FIRST)  {
-  //     this.generalRecognize();
-  //   }
-  //   // if (this.resultList == undefined) {
-  //   //   Logger.error("resultList is undefined", "");
-  //   // } else if (this.resultList.length == undefined) {
-  //   //   Logger.error("resultList.length is undefined resultList:", this.resultList.toString());
-  //   // }
-  // }
+      generalResponseUnitList.forEach((item) => {
+        // 抛弃description
+        resultList.push(new ResultItem(item.getKeyword(), item.getTag(), item.getScore(), '', new ImageItem("whatever", "jpg", item.getImageUrl())))
+      })
+
+      // DEBUG
+      Logger.info("resultList is assembled", resultList.toString());
+
+    } catch(err) {
+      Logger.error("generalImageRequest falied", JSON.stringify(err));
+    }
+
+    return resultList;
+  }
+
 
   aboutToAppear() {
     // 根据Index传递过来的参数类型将图片上传
     let params = router.getParams() as Record<string, Object>;
     this.imageName = params.imageName as string;
+
     // DEBUG
     if (this.imageName == null) {
       Logger.info("image is bad initialized, image:", "no!!!!!!!!!!");
     }
-    // let name = this.image.getName()
 
     this.httpHelper = new HttpHelper(this.imageName);
 
-    // // DEBUG
-    //
-    //
-    // // general
-    // if (this.currentIndex == PageConstants.TAB_BAR_FIRST) {
-    //   this.generalRecognize()
-    //     .then((resultList: Array<ResultItem>) => { this.resultList = resultList; })
-    //     .catch((resultList: Array<ResultItem>) => { this.resultList = resultList});
-    // }
-    //
-    // // DEBUG
-    // if (this.resultList.length == undefined) {
-    //   Logger.info("this.resultList.length is undefined", "");
-    //   this.resultList = [];
-    // } else  {
-    //   Logger.info("this.resultList.length:    ", this.resultList.length.toString());
-    //   Logger.info("resultList[0].name:     ", this.resultList[0].getName().toString())
-    // }
+    // 默认是general
+    this.refresh();
+  }
+
+
+
+  refresh() {
+    this.recognize(this.currentIndex)
+      .then((resultList: Array<ResultItem>) => {
+        if (resultList.length != 0) {
+          this.resultList = resultList;
+        }
+        Logger.info("recognize success, resultList: ", resultList.toString());
+      })
+      .catch((resultList: Array<ResultItem>) => {
+        if (resultList.length != 0) {
+          this.resultList = resultList;
+        }
+        Logger.info("recognize failed, resultList: ", resultList.toString());
+      });
+
   }
 
   @Builder
@@ -95,7 +109,7 @@ struct ResultPage {
     .width(CommonConstants.FULL_PERCENT)
     .onClick(() => {
       this.currentIndex = index;
-      // this.refresh()
+      this.refresh()
       this.controller.changeIndex(this.currentIndex);
     })
   }
@@ -106,27 +120,27 @@ struct ResultPage {
 
         // general
         TabContent() {
-          ResultTabContent({myIndex : 0});
+          ResultTabContent({ myIndex: 0 });
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FIRST, $r('app.string.index_tab_general')))
 
         // animal
         TabContent() {
-          ResultTabContent({myIndex : 1});
+          ResultTabContent({ myIndex: 1 });
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_SECOND, $r('app.string.index_tab_animal')))
 
         // botany
         TabContent() {
-          ResultTabContent({myIndex : 2});
+          ResultTabContent({ myIndex: 2 });
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_THIRD, $r('app.string.index_tab_botany')))
 
         // logo
         TabContent() {
-          ResultTabContent({myIndex : 3});
+          ResultTabContent({ myIndex: 3 });
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FOURTH, $r('app.string.index_tab_logo')))
 
         // money
         TabContent() {
-          ResultTabContent({ myIndex : 4});
+          ResultTabContent({ myIndex: 4 });
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FIFTH, $r('app.string.index_tab_money')))
 
       }

@@ -9,7 +9,7 @@ export class Encoder {
     try {
       let imageBase64Buffer = await getContext().resourceManager.getMediaBase64ByName(imageName);
       // 去除编码头
-      // imageBase64Buffer = imageBase64Buffer.replace(/^data:image\/(png|jpg|bmp);base64,/, '')
+      imageBase64Buffer = imageBase64Buffer.replace(/^data:image\/(png|jpg|bmp);base64,/, '')
 
       // imageBase64Buffer = imageBase64Buffer;
 

@@ -9,3 +9,6 @@
 /.clang-format
 /.clang-tidy
 **/.test
+/server/data
+/server/__pycache__
+/server/.ipynb_checkpoints
