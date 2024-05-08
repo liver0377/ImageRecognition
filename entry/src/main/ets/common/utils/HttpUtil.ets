@@ -29,7 +29,8 @@ export class HttpHelper {
       extraData = `image=${imageCode}&top_num=${CommonConstants.BAIKE_NUM}&baike_num=${CommonConstants.BAIKE_NUM}`;
     }
     if (type == "plant") {
-      prefix = CommonConstants.BAIDU_PLANT_URL;
+      // prefix = CommonConstants.BAIDU_PLANT_URL;
+      prefix = CommonConstants.MY_BOTANY_URL
       extraData = `image=${imageCode}&top_num=${CommonConstants.BAIKE_NUM}&baike_num=${CommonConstants.BAIKE_NUM}`;
     }
     if (type == "logo") {

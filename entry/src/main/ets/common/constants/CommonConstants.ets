@@ -68,7 +68,9 @@ export class CommonConstants {
   static readonly BAIDU_LOGO_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v2/logo"
   static readonly BAIDU_MONEY_URL : string = "https://aip.baidubce.com/rest/2.0/image-classify/v1/currency"
 
-  static readonly MY_GENERAL_URL: string = "http://192.168.100.169:9588/image/"
+  static readonly MY_GENERAL_URL: string = "http://172.16.13.168:8888/image/general"
+  static readonly MY_BOTANY_URL: string = "http://172.16.13.168:8888/image/botany"
+
 
   /**
    * baidu baike numbers
@@ -103,6 +105,8 @@ export const IMAGE_DATA: ImageItem[] = [
   new ImageItem('image_9', "jpg"),
   new ImageItem('image_10', "jpg"),
   new ImageItem('image_11', "jpg"),
+  new ImageItem('image_12', "jpg"),
+  new ImageItem('image_13', "jpg")
 ]
 
 
