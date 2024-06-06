@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\HP\\.ohos\\config\\auto_debug_ImageRecognition_com.example.imagerecognition_2850086000496192240.cer",
+          "storePassword": "0000001B254E0760BE17EB344293B696B9DD5C88927FD360C3480E2AE1BFFA121FB5086739F9036F3409CB",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B6D5717B832E57C6552BDBCF2645000A5C66646022AA8A388744FEA781BC4360419A1F01C1F32C1",
+          "profile": "C:\\Users\\HP\\.ohos\\config\\auto_debug_ImageRecognition_com.example.imagerecognition_2850086000496192240.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\HP\\.ohos\\config\\auto_debug_ImageRecognition_com.example.imagerecognition_2850086000496192240.p12"
+        }
+      }
+    ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [
