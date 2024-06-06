@@ -20,8 +20,8 @@ export class HttpHelper {
     let extraData: string;
 
     if (type == "general") {
-      // prefix = CommonConstants.BAIDU_GENERAL_URL;
-      prefix = CommonConstants.MY_GENERAL_URL
+      prefix = CommonConstants.BAIDU_GENERAL_URL;
+     //  prefix = CommonConstants.MY_GENERAL_URL
       extraData = `image=${imageCode}&baike_num=${CommonConstants.BAIKE_NUM}`;
     }
     if (type == "animal") {
@@ -29,19 +29,19 @@ export class HttpHelper {
       extraData = `image=${imageCode}&top_num=${CommonConstants.BAIKE_NUM}&baike_num=${CommonConstants.BAIKE_NUM}`;
     }
     if (type == "plant") {
-      // prefix = CommonConstants.BAIDU_PLANT_URL;
-      prefix = CommonConstants.MY_BOTANY_URL
+       // prefix = CommonConstants.BAIDU_PLANT_URL;
+       prefix = CommonConstants.MY_BOTANY_URL
       extraData = `image=${imageCode}&top_num=${CommonConstants.BAIKE_NUM}&baike_num=${CommonConstants.BAIKE_NUM}`;
     }
     if (type == "logo") {
       prefix = CommonConstants.BAIDU_LOGO_URL;
-      extraData = `image='${imageCode}`
+      extraData = `image=${imageCode}`
     }
 
     // todo
     if (type == "money") {
       prefix = CommonConstants.BAIDU_MONEY_URL;
-      extraData = `image=${imageCode}`
+      extraData = `image=${imageCode}`;
     }
 
     let url = prefix + '?' + 'access_token=' + ACCESS_TOKEN;
@@ -85,7 +85,7 @@ export class HttpHelper {
           }
 
           if (type == "plant") {
-            keyword = item.name;
+            keyword = item.keyword;
             tag = "植物"
             score = item.score
           }

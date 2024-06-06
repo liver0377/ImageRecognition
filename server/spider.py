@@ -45,8 +45,3 @@ async def get_baidu_baike_image_url(keyword):
                 print("未找到JSON数据")
 
     return image_url
-
-
-
-
-# webbrowser.open(image_url)
