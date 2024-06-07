@@ -4,6 +4,8 @@ import { CommonConstants, RecognitionType } from '../common/constants/CommonCons
 import { PageConstants } from '../common/constants/PageConstants'
 import { ResultTabContent } from '../view/ResultTabContent'
 import { HttpHelper } from '../common/utils/HttpUtil'
+import { GlobalContext } from '../common/utils/GlobalContext'
+
 import router from '@ohos.router';
 import Logger from '../common/utils/Logger'
 
@@ -37,6 +39,28 @@ struct ResultPage {
       if (idx == PageConstants.TAB_BAR_FIFTH) {
         generalResponseUnitList = await this.httpHelper.moneyImageRequest();
       }
+
+      // 该图片加入准确率最高的一个类别库
+      let tag : string = generalResponseUnitList[0].getTag()
+      let imageItem = new ImageItem(this.imageName.split('.')[0], "jpg")
+
+      if (tag.includes("动物")) {
+        Logger.info("set context object: 动物,", this.imageName)
+        GlobalContext.getContext().setObject("动物", imageItem)
+      } else if (tag.includes("水果")) {
+        Logger.info("set context object: 水果,", this.imageName)
+        GlobalContext.getContext().setObject("水果", imageItem)
+      } else if (tag.includes("logo") || tag.includes("Logo")) {
+        Logger.info("set context object: logo,", this.imageName)
+        GlobalContext.getContext().setObject("logo", imageItem)
+      } else  if (tag.includes("货币")) {
+        Logger.info("set context object: 货币,", this.imageName)
+        GlobalContext.getContext().setObject("货币", imageItem)
+      } else {
+        Logger.info("set context object: 其它,", this.imageName)
+        GlobalContext.getContext().setObject("其它", imageItem)
+      }
+
 
       generalResponseUnitList.forEach((item) => {
         // 抛弃description

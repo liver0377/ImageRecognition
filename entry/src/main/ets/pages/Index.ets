@@ -1,6 +1,7 @@
 import { CommonConstants } from '../common/constants/CommonConstants'
 import { PageConstants } from '../common/constants/PageConstants'
 import { HomeTabContent } from '../view/HomeTabContent'
+import { LibraryTabContent } from '../view/LibraryTabContent';
 
 @Entry
 @Component
@@ -34,6 +35,10 @@ struct Index {
         TabContent() {
           HomeTabContent();
         }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_FIRST, $r('app.string.index_tab_local_video')))
+
+        TabContent() {
+          LibraryTabContent();
+        }.tabBar(this.TabBuilder(PageConstants.TAB_BAR_SECOND, $r('app.string.index_tab_local_library')))
 
       }
       .vertical(false)

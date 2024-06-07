@@ -20,6 +20,12 @@ export class GlobalContext {
   }
 
   setObject(key: string, objectClass: Object): void {
-    this._objects.set(key, objectClass);
+    if (this._objects.has(key)) {
+      // 如果key已经存在，将新的对象添加到数组末尾
+      (this._objects.get(key) as Object[]).push(objectClass);
+    } else {
+      // 如果key不存在，将key和对象作为数组的第一个元素存储
+      this._objects.set(key, [objectClass]);
+    }
   }
 }

@@ -45,6 +45,10 @@
       "value": "本地图片列表"
     },
     {
+      "name": "index_tab_local_library",
+      "value": "分类库"
+    },
+    {
       "name": "index_tab_general",
       "value": "通用"
     },
